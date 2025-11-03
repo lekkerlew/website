@@ -1,68 +1,116 @@
+/* ==========================================
+   TRANSPARENT TO SOLID NAVBAR STYLES
+   ========================================== */
+
+/* Base navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    transition: all 0.4s ease;
+}
+
+/* Transparent state (over hero section) */
+.navbar-transparent {
+    background-color: rgba(25, 57, 102, 0.15) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Solid state (scrolled past hero) */
+.navbar-scrolled {
+    background-color: rgba(25, 57, 102, 0.98) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+}
+
 /* Navbar logo scaling */
 .nav-logo {
-    transition: height 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: height 0.4s ease, transform 0.4s ease;
     height: 60px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
+
 .navbar-scrolled .nav-logo {
-    height: 40px;
-    transform: scale(0.85);
+    height: 50px;
 }
 
-/* Subtitle styling */
-.subtitle-light {
-    font-weight: 400;
-    text-transform: capitalize;
+/* Navbar links styling */
+.navbar-nav .nav-link {
+    position: relative;
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Navbar fade effect */
-.navbar-scrolled {
-    background-color: rgba(0, 0, 0, 0.85) !important;
-    transition: background-color 0.4s ease;
-}
-
-/* Smooth scroll */
-html {
-    scroll-behavior: smooth;
+/* Remove text shadow when scrolled */
+.navbar-scrolled .navbar-nav .nav-link {
+    text-shadow: none;
 }
 
 /* Active nav link animation */
-.navbar-nav .nav-link {
-    position: relative;
-    transition: color 0.3s ease;
-}
 .navbar-nav .nav-link::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
+    left: 15px;
+    right: 15px;
+    bottom: 5px;
     height: 2px;
     background-color: #ffc107;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
 }
+
 .navbar-nav .nav-link.active::after {
     transform: scaleX(1);
 }
+
 .navbar-nav .nav-link.active {
     font-weight: 600;
     color: #ffc107 !important;
 }
 
-/* Keep Contact Us button styled separately */
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Contact Us button - always styled */
 .navbar-nav .btn-ee-blue {
     font-weight: 600;
-    border-bottom: none !important;
     color: #fff !important;
+    background-color: #2c63b1;
+    border: 2px solid #2c63b1;
+    padding: 8px 24px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-shadow: none !important;
+}
+
+.navbar-nav .btn-ee-blue::after {
+    display: none;
+}
+
+.navbar-nav .btn-ee-blue:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #193966 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
 }
 
 /* Dropdown menu styling */
 .dropdown-menu {
-    background-color: rgba(25, 57, 102, 0.95) !important;
-    border: 1px solid #ffc107;
+    background-color: rgba(25, 57, 102, 0.98) !important;
+    border: 1px solid rgba(255, 193, 7, 0.3);
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-top: 8px;
+    padding: 8px 0;
 }
 
 .dropdown-menu .dropdown-item {
@@ -70,6 +118,7 @@ html {
     padding: 12px 20px;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
+    font-weight: 500;
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -85,19 +134,111 @@ html {
     border-left-color: #ffc107;
 }
 
-/* Dropdown toggle styling */
+/* Dropdown toggle arrow */
 .navbar-nav .dropdown-toggle::after {
-    border-color: #ffc107 !important;
+    border-top-color: #ffffff;
+    transition: border-color 0.3s ease;
 }
 
 .navbar-nav .dropdown-toggle:hover::after {
-    border-color: #ffffff !important;
+    border-top-color: #ffc107;
+}
+
+/* Mobile navbar toggler */
+.navbar-toggler {
+    border: none;
+    padding: 8px 10px;
+    outline: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.navbar-scrolled .navbar-toggler-bar {
+    background-color: #ffffff;
+}
+
+/* Mobile menu styling */
+@media (max-width: 991px) {
+    .navbar {
+        background-color: rgba(25, 57, 102, 0.98) !important;
+        backdrop-filter: none;
+    }
+    
+    .navbar-collapse {
+        background-color: rgba(25, 57, 102, 0.98);
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 12px 15px;
+        text-shadow: none;
+    }
+    
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+    
+    .dropdown-menu {
+        background-color: rgba(44, 99, 177, 0.95) !important;
+        border: none;
+        box-shadow: none;
+        margin-top: 0;
+    }
+    
+    .navbar-nav .btn-ee-blue {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
 }
 
 /* Accessibility improvements */
-.nav-link:focus, .btn:focus {
+.nav-link:focus, 
+.btn:focus,
+.dropdown-toggle:focus {
     outline: 2px solid #ffc107;
     outline-offset: 2px;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure content doesn't go behind navbar */
+body {
+    padding-top: 80px;
+}
+
+@media (max-width: 991px) {
+    body {
+        padding-top: 70px;
+    }
+}
+
+/* ==========================================
+   EXISTING STYLES (PRESERVED)
+   ========================================== */
+
+/* Subtitle styling */
+.subtitle-light {
+    font-weight: 400;
+    text-transform: capitalize;
 }
 
 /* Loading spinner */
@@ -160,6 +301,7 @@ h3 {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
+
 .gallery-img {
     width: 100%;
     height: auto;
@@ -167,14 +309,17 @@ h3 {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .gallery-img:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
 .modal-content {
     border-radius: 12px;
     border: none;
 }
+
 .lightbox-nav {
     position: absolute;
     top: 50%;
@@ -189,9 +334,18 @@ h3 {
     transition: background 0.3s ease;
     z-index: 10;
 }
-.lightbox-nav:hover { background: rgba(0,0,0,0.8); }
-.lightbox-nav.prev { left: 15px; }
-.lightbox-nav.next { right: 15px; }
+
+.lightbox-nav:hover { 
+    background: rgba(0,0,0,0.8); 
+}
+
+.lightbox-nav.prev { 
+    left: 15px; 
+}
+
+.lightbox-nav.next { 
+    right: 15px; 
+}
 
 /* Logo slider */
 .logo-slider {
@@ -200,11 +354,13 @@ h3 {
     width: 100%;
     padding: 20px 0;
 }
+
 .logo-track {
     display: flex;
     width: calc(200%);
     animation: scroll 25s linear infinite;
 }
+
 .logo-track img {
     height: 80px;
     margin: 0 30px;
@@ -214,10 +370,12 @@ h3 {
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 .logo-track img:hover {
     transform: scale(1.1);
     filter: grayscale(0%);
 }
+
 @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -228,11 +386,13 @@ h3 {
     overflow: hidden;
     width: 100%;
 }
+
 .brands-track {
     display: flex;
     gap: 40px;
     animation: scroll 25s linear infinite;
 }
+
 .brands-track img {
     height: 80px;
     object-fit: contain;
@@ -242,16 +402,20 @@ h3 {
 .hover-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .hover-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
+
 .hover-card img {
     transition: transform 0.3s ease;
 }
+
 .hover-card:hover img {
     transform: scale(1.05);
 }
+
 .gradient-card {
     background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
 }
@@ -260,10 +424,12 @@ h3 {
 .letter-thumb img {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .letter-thumb:hover img {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
+
 .letters-section {
     background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
 }
@@ -274,6 +440,7 @@ h3 {
     color: #ffffff;
     margin: 0 30px;
 }
+
 .footer-social a:hover {
     transform: scale(1.2);
     color: #ff4d4d;
@@ -283,24 +450,24 @@ h3 {
 .is-invalid {
     border-color: #dc3545 !important;
 }
+
 .invalid-feedback {
     display: none;
     color: #dc3545;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
+
 .was-validated .form-control:invalid ~ .invalid-feedback {
     display: block;
 }
 
 /* Calculator toggles */
-/* Hide calculator divs by default */
 #solar-cost-calc,
 #epc-requirements-calc {
     display: none;
 }
 
-/* Calculator wrapper styling */
 .calculator-wrapper {
     position: relative;
     width: 100%;
@@ -313,7 +480,7 @@ h3 {
 /* Close button for calculators */
 .calc-close-btn {
     position: fixed;
-    top: 80px;
+    top: 90px;
     right: 20px;
     z-index: 1000;
     font-size: 2.5rem;
@@ -359,7 +526,7 @@ h3 {
     }
     
     .calc-close-btn {
-        top: 70px;
+        top: 80px;
         right: 10px;
         font-size: 2rem;
         width: 45px;
@@ -375,6 +542,7 @@ h3 {
         padding: 6px;
         border-radius: 8px;
     }
+    
     .footer-social a {
         margin: 0 15px;
     }
@@ -386,6 +554,7 @@ h3 {
         flex-wrap: nowrap;
         justify-content: space-between;
     }
+    
     #divisions-row > div {
         flex: 0 0 19%;
         max-width: 19%;
