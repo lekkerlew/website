@@ -1,5 +1,5 @@
 /**
- * navigation.js - Handle navbar functionality
+ * navigation.js - Handle navbar functionality and calculator visibility
  */
 
 (function() {
@@ -67,88 +67,88 @@
             }
         });
 
-        // --- START: CALCULATOR LOGIC ---
-        // This logic is now inside initNavigation, so we know the links exist.
+        // --- CALCULATOR VISIBILITY LOGIC ---
+        const mainContent = document.querySelector('.main');
+        const solarCalcDiv = document.getElementById('solar-cost-calc');
+        const epcCalcDiv = document.getElementById('epc-requirements-calc');
 
-        const mainContainer = document.getElementById('main-container');
-        const calcContainers = [
-            document.getElementById('solar-cost-calc'),
-            document.getElementById('epc-requirements-calc')
-        ];
+        // Helper function to hide all other content sections
+        function hideAllContent() {
+            if (mainContent) {
+                // Hide all direct section children except the calculator section
+                const sections = mainContent.querySelectorAll('section, div.section');
+                sections.forEach(section => {
+                    if (section.id !== 'calculator') {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+        }
 
-        // 1. Listen for Clicks on Calculator Links
+        // Helper function to show all other content sections
+        function showAllContent() {
+            if (mainContent) {
+                const sections = mainContent.querySelectorAll('section, div.section');
+                sections.forEach(section => {
+                    section.style.display = 'block';
+                });
+            }
+        }
+
+        // Helper function to show a specific calculator
+        function showCalculator(calcDiv) {
+            if (!calcDiv) return;
+
+            // Hide the other calculator
+            if (calcDiv === solarCalcDiv && epcCalcDiv) {
+                epcCalcDiv.style.display = 'none';
+            } else if (calcDiv === epcCalcDiv && solarCalcDiv) {
+                solarCalcDiv.style.display = 'none';
+            }
+
+            // Show the current calculator
+            calcDiv.style.display = 'block';
+            hideAllContent();
+            
+            // Scroll to calculator
+            setTimeout(() => {
+                calcDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Helper function to hide all calculators
+        function hideAllCalculators() {
+            if (solarCalcDiv) solarCalcDiv.style.display = 'none';
+            if (epcCalcDiv) epcCalcDiv.style.display = 'none';
+            showAllContent();
+        }
+
+        // Listen for clicks on calculator dropdown links
         document.querySelectorAll('.calc-loader-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                // This is the most important part: prevent default navigation
-                e.preventDefault(); 
+                e.preventDefault();
                 e.stopPropagation();
 
-                const url = link.getAttribute('href');
                 const targetDivId = link.dataset.targetDiv;
                 const targetDiv = document.querySelector(targetDivId);
 
-                if (!targetDiv || !mainContainer) {
-                    console.error("Calculator containers or main container not found.");
-                    return;
-                }
-                
-                // Hide any other calculators that might be open
-                calcContainers.forEach(container => {
-                    if (container) {
-                        container.style.display = 'none';
-                        container.innerHTML = ''; // Clear old content
+                if (targetDiv) {
+                    showCalculator(targetDiv);
+                    
+                    // Close mobile menu if open
+                    if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
+                        navbarCollapse.classList.remove('show');
                     }
-                });
-
-                // Load the new content
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        // Create and add the close button
-                        const closeButton = '<button type="button" class="calc-close-btn" aria-label="Close" style="position: absolute; top: 15px; right: 20px; font-size: 2.5rem; color: #fff; background: transparent; border: 0; text-shadow: 0 1px 0 #000; opacity: .8; z-index: 10;">&times;</button>';
-                        
-                        targetDiv.innerHTML = closeButton + html;
-                        targetDiv.style.position = 'relative'; // Ensure button is positioned correctly
-
-                        // Hide the main content and show the calculator
-                        mainContainer.style.display = 'none';
-                        targetDiv.style.display = 'block';
-
-                        // Scroll to the top of the newly loaded calculator
-                        targetDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    })
-                    .catch(error => {
-                        console.error('Error loading calculator:', error);
-                        targetDiv.innerHTML = '<p style="color:red; text-align:center; padding: 20px;">Error loading content. Please try again.</p>';
-                        targetDiv.style.display = 'block';
-                    });
+                }
             });
         });
 
-        // 2. Listen for Clicks on "Close" Buttons (using event delegation)
-        // This listener is added to the document so it can catch clicks on
-        // buttons that are added dynamically.
+        // Listen for close button clicks on calculators
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('calc-close-btn')) {
-                
-                const calculatorDiv = e.target.closest('#solar-cost-calc, #epc-requirements-calc');
-                
-                if (calculatorDiv) {
-                    calculatorDiv.style.display = 'none';
-                    calculatorDiv.innerHTML = ''; // Clear its content
-                }
-    
-                if (mainContainer) {
-                    mainContainer.style.display = 'block';
-                }
+                hideAllCalculators();
             }
         });
-        // --- END: CALCULATOR LOGIC ---
     }
     
     // Initialize when components are loaded
