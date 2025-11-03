@@ -1,0 +1,434 @@
+<!-- Commercial Grid Tie Modal -->
+        <div class="modal fade" id="com_grid_tie_Modal" tabindex="-1" role="dialog" aria-labelledby="com_grid_tie_Label" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h5 class="modal-title text-center project-title" id="com_grid_tie_Label">Commercial - Grid-Tie</h5>
+              </div>
+              <div class="modal-body">
+                <div class="project-details ">
+
+                  <label for="com_grid_tie_name"> Size range of projects:</label> <span id="com_grid_tie_size"> Various - 50kWp up to 200kWp</span> <br>
+                  <label for="com_grid_tie_location"> Locations:</label> <span id="com_grid_tie_location"> Limpopo & Gauteng</span>
+                  <!-- <br>
+                  <label for="com_grid_tie_power">Power Generating Capacity:</label> <span id="com_grid_tie_power">200KW/h</span><br>
+                  <label for="com_grid_tie_story">Story:</label> <p><span id="com_grid_tie_scope">
+                    Describe the system and the aims of the client in recruiting Elite Energy Solutions for this Project.</span>
+                    </p>-->
+                    <hr>
+                    <div class="project-gallery col-md-8 ml-auto mr-auto">
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_grid_tie/wm.main.jpg"  alt="">
+<!--                         <span>Image Caption: Solar panels</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_grid_tie/wm.01.jpg"  alt="">
+<!--                         <span>Image Caption: Smart Distribution board</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_grid_tie/wm.02.jpg"  alt="">
+<!--                         <span>Image Caption: Active Grid switch over</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_grid_tie/wm.03.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Commercial Hybrid Modal -->
+        <div class="modal fade" id="com_hybrid_Modal" tabindex="-1" role="dialog" aria-labelledby="com_hybrid_Label" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h5 class="modal-title text-center project-title" id="com_hybrid_Label">Commercial - Hybrid</h5>
+              </div>
+              <div class="modal-body">
+                <div class="project-details ">
+
+                  <label for="com_hybrid_name"> Size range of projects:</label> <span id="com_hybrid_size"> Various - 15kWp up to 90kWp</span> <br>
+                  <label for="com_hybrid_location"> Locations:</label> <span id="com_hybrid_location"> Mpumalanga & Gauteng</span>
+                    <hr>
+                    <div class="project-gallery col-md-8 ml-auto mr-auto">
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.main.jpg"  alt="">
+<!--                         <span>Image Caption: Solar panels</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.01.jpg"  alt="">
+<!--                         <span>Image Caption: Smart Distribution board</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.02.jpg"  alt="">
+<!--                         <span>Image Caption: Active Grid switch over</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.03.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.04.jpg"  alt="">
+<!--                         <span>Image Caption: Active Grid switch over</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.05.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_hybrid/wm.06.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commercial Off Grid Modal -->
+        <div class="modal fade" id="com_off_grid_Modal" tabindex="-1" role="dialog" aria-labelledby="com_off_grid_Label" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h5 class="modal-title text-center project-title" id="com_off_grid_Label">Commercial - Off-Grid</h5>
+              </div>
+              <div class="modal-body">
+                <div class="project-details ">
+
+                  <label for="com_off_grid_name"> Size range of projects:</label> <span id="com_off_grid_size"> Various - 45kWp up to 240kWp</span> <br>
+                  <label for="com_off_grid_location"> Locations:</label> <span id="com_off_grid_location"> Free State & Gauteng</span>
+                    <hr>
+                    <div class="project-gallery col-md-8 ml-auto mr-auto">
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.main.jpg"  alt="">
+<!--                         <span>Image Caption: Solar panels</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.01.jpg"  alt="">
+<!--                         <span>Image Caption: Smart Distribution board</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.02.jpg"  alt="">
+<!--                         <span>Image Caption: Active Grid switch over</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.03.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.04.jpg"  alt="">
+<!--                         <span>Image Caption: Active Grid switch over</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.05.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+                      <div class="project-img">
+
+                        <img class="d-block img-fluid" src="./assets/img/projects/com_off_grid/wm.06.jpg"  alt="">
+<!--                         <span>Image Caption: Inverter</span> -->
+                      </div>
+
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rural HybridModal -->
+        <div class="modal  fade" id="rural_hybrid_Modal" tabindex="-1" role="dialog" aria-labelledby="rural_hybrid_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h2 class="modal-title text-center project-title" id="rural_hybrid_ModalLabel">Rural - Hybrid</h2>
+              </div>
+              <div class="modal-body">
+                <div class="project-details">
+
+                <label for="rural_hybrid_name"> Size range of projects:</label> <span id="rural_hybrid_size"> Various - 5kWp up to 90kWp</span> <br>
+                  <label for="rural_hybrid_location"> Locations:</label> <span id="rural_hybrid_location"> Mpumalanga & Gauteng</span>
+                  <hr>
+                  <div class="project-gallery col-md-8 ml-auto mr-auto">
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/rural_hybrid/wm.main.jpg"  alt="">
+<!--                       <span>Image Caption: Solar panels</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/rural_hybrid/wm.02.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/rural_hybrid/wm.03.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/rural_hybrid/wm.04.jpg"  alt="">
+<!--                       <span>Image Caption: Inverter</span> -->
+                    </div> 
+
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+         <!-- Residential HybridModal -->
+        <div class="modal  fade" id="res_hybrid_Modal" tabindex="-1" role="dialog" aria-labelledby="res_hybrid_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h2 class="modal-title text-center project-title" id="res_hybrid_ModalLabel">Residential - Hybrid</h2>
+              </div>
+              <div class="modal-body">
+                <div class="project-details">
+
+                <label for="res_hybrid_name"> Size range of projects:</label> <span id="res_hybrid_size"> Various - 5kWp up to 90kWp</span> <br>
+                  <label for="res_hybrid_location"> Locations:</label> <span id="res_hybrid_location"> Limpopo, KZN & Gauteng</span>
+                  <hr>
+                  <div class="project-gallery col-md-8 ml-auto mr-auto">
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/res_hybrid/wm.main.jpg"  alt="">
+<!--                       <span>Image Caption: Solar panels</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/res_hybrid/wm.02.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/res_hybrid/wm.03.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+          <!-- Fault Finding Modal -->
+        <div class="modal  fade" id="fault_find_Modal" tabindex="-1" role="dialog" aria-labelledby="fault_find_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h2 class="modal-title text-center project-title" id="fault_find_ModalLabel">Fault Finding</h2>
+              </div>
+              <div class="modal-body">
+                <div class="project-details">
+
+                <label for="fault_find_name"> Size range of projects:</label> <span id="fault_find_size"> Various</span> <br>
+                  <label for="fault_find_location"> Locations:</label> <span id="fault_find_location"> Nationwide</span>
+                  <hr>
+                  <div class="project-gallery col-md-8 ml-auto mr-auto">
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/fault_find/wm.main.jpg"  alt="">
+<!--                       <span>Image Caption: Solar panels</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/fault_find/wm.01.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/fault_find/wm.02.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+         <!-- Old Micro Modal -->
+        <div class="modal  fade" id="old_micro_Modal" tabindex="-1" role="dialog" aria-labelledby="old_micro_ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header section-ee-dark">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h2 class="modal-title text-center project-title" id="old_micro_ModalLabel">Old and Micro Installations</h2>
+              </div>
+              <div class="modal-body">
+                <div class="project-details">
+
+                <label for="old_micro_name"> Size range of projects:</label> <span id="old_micro_size"> Various - 1kWp up to 5kWp</span> <br>
+                  <label for="old_micro_location"> Locations:</label> <span id="old_micro_location"> Nationwide. Mobile Units designed and exported to Mozambique, Botswana & Zimbabwe</span>
+                  <hr>
+                  <div class="project-gallery col-md-8 ml-auto mr-auto">
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.00.jpg"  alt="">
+<!--                       <span>Image Caption: Solar panels</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.01.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.02.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.03.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.04.jpg"  alt="">
+<!--                       <span>Image Caption: Inverter</span> -->
+                    </div> 
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.05.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.06.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.07.jpg"  alt="">
+<!--                       <span>Image Caption: Inverter</span> -->
+                    </div> 
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.08.jpg"  alt="">
+<!--                       <span>Image Caption: Secure Exterior System Storage Open</span> -->
+                    </div>
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.09.jpg"  alt="">
+<!--                       <span>Image Caption: Inverter</span> -->
+                    </div> 
+                    <div class="project-img">
+
+                      <img class="d-block img-fluid" src="./assets/img/projects/old_micro/wm.10.jpg"  alt="">
+<!--                       <span>Image Caption: Inverter</span> -->
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="right-side">
+                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                </div>
+                <!-- <div class="divider"></div> -->
+                <!-- <div class="right-side">
+                  <button type="button" class="btn btn-danger btn-link">Delete</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>

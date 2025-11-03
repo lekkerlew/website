@@ -1,0 +1,320 @@
+/* Navbar logo scaling */
+.nav-logo {
+    transition: height 0.3s ease-in-out, transform 0.3s ease-in-out;
+    height: 60px;
+}
+.navbar-scrolled .nav-logo {
+    height: 40px;
+    transform: scale(0.85);
+}
+
+/* Subtitle styling */
+.subtitle-light {
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+/* Navbar fade effect */
+.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    transition: background-color 0.4s ease;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Active nav link animation */
+.navbar-nav .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+}
+.navbar-nav .nav-link.active {
+    font-weight: 600;
+    color: #ffc107 !important;
+}
+
+/* Keep Contact Us button styled separately */
+.navbar-nav .btn-ee-blue {
+    font-weight: 600;
+    border-bottom: none !important;
+    color: #fff !important;
+}
+
+/* Accessibility improvements */
+.nav-link:focus, .btn:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+}
+
+/* Loading spinner */
+.spinner-border {
+    display: none;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.btn-loading .spinner-border {
+    display: inline-block;
+}
+
+.btn-loading .btn-text {
+    display: none;
+}
+
+/* Cookie consent banner */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    z-index: 9999;
+    display: none;
+}
+
+/* About section styling */
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 40px 0 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Gallery improvements */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.gallery-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+.lightbox-nav:hover { background: rgba(0,0,0,0.8); }
+.lightbox-nav.prev { left: 15px; }
+.lightbox-nav.next { right: 15px; }
+
+/* Logo slider */
+.logo-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+}
+.logo-track {
+    display: flex;
+    width: calc(200%);
+    animation: scroll 25s linear infinite;
+}
+.logo-track img {
+    height: 80px;
+    margin: 0 30px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.logo-track img:hover {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Brands slider */
+.brands-slider {
+    overflow: hidden;
+    width: 100%;
+}
+.brands-track {
+    display: flex;
+    gap: 40px;
+    animation: scroll 25s linear infinite;
+}
+.brands-track img {
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Divisions cards */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.hover-card img {
+    transition: transform 0.3s ease;
+}
+.hover-card:hover img {
+    transform: scale(1.05);
+}
+.gradient-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+}
+
+/* Letters section */
+.letter-thumb img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.letter-thumb:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.letters-section {
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+}
+
+/* Footer social icons */
+.footer-social a {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #ffffff;
+    margin: 0 30px;
+}
+.footer-social a:hover {
+    transform: scale(1.2);
+    color: #ff4d4d;
+}
+
+/* Form validation styles */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+.invalid-feedback {
+    display: none;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+.was-validated .form-control:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Calculator toggles */
+/* Hide calculator divs by default */
+#solar-cost-calc,
+#epc-requirements-calc {
+    display: none;
+}
+
+/* Basic styling for the new 'close' button */
+.calc-close-btn {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    line-height: 1;
+}
+
+.calc-close-btn:hover {
+    color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .logo-track img {
+        height: 65px;
+        margin: 0 20px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-track img {
+        height: 55px;
+        margin: 0 15px;
+        padding: 6px;
+        border-radius: 8px;
+    }
+    .footer-social a {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #divisions-row {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    #divisions-row > div {
+        flex: 0 0 19%;
+        max-width: 19%;
+    }
+}
