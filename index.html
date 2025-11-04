@@ -26,19 +26,21 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="./assets/css/bootstrap.min.css" as="style">
-    <!--<link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:200, 400, 700" as="style">-->
 
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <!--<link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet" />-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- CSS Files -->
+    <!-- CSS Files - Load in specific order -->
+    <!-- 1. Bootstrap (framework foundation) -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!--<link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />-->
+    
     <link href="./assets/css/ee.css" rel="stylesheet" />
-    <link href="./css/custom.css" rel="stylesheet" />
+    
+    <!-- 3. Calculator-specific styles (scoped to prevent bleeding) -->
+    <!-- These are loaded but only apply within their respective calculator containers -->
     <link rel="stylesheet" href="./tools/css/epc-requirements-calculator.css">
+    <link rel="stylesheet" href="./tools/css/solar-savings-calculator.css">
 </head>
 
 <body class="index-page sidebar-collapse" data-spy="scroll" data-target="#navigation" data-offset="80">
@@ -71,7 +73,6 @@
     <!-- Custom JavaScript -->
     <script src="./js/loader.js"></script>
     <script src="./js/navigation.js"></script>
-    <script src="./js/gallery.js"></script>
     <script src="./js/form.js"></script>
     <script src="./js/cookies.js"></script>
     <script src="./js/main.js"></script>

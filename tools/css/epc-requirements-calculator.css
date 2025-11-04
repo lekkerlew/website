@@ -1,8 +1,16 @@
 /* ==========================================
    EPC REQUIREMENTS CALCULATOR STYLES
+   SCOPED TO: #epc-requirements-calc
    ========================================== */
 
-.epc-container {
+/* All styles scoped to prevent bleeding into main content */
+
+#epc-requirements-calc {
+    /* Reset any inherited styles */
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+#epc-requirements-calc .epc-container {
     position: relative;
     width: 100%;
     max-width: 800px;
@@ -13,7 +21,7 @@
     overflow: hidden;
 }
 
-.background-grid {
+#epc-requirements-calc .background-grid {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,7 +35,7 @@
     z-index: 0;
 }
 
-.epc-header {
+#epc-requirements-calc .epc-header {
     background: linear-gradient(135deg, #193966 0%, #2c63b1 100%);
     color: white;
     padding: 40px 30px;
@@ -36,32 +44,32 @@
     z-index: 1;
 }
 
-.epc-header h1 {
+#epc-requirements-calc .epc-header h1 {
     font-size: 28px;
     margin-bottom: 8px;
     font-weight: 700;
 }
 
-.epc-header p {
+#epc-requirements-calc .epc-header p {
     font-size: 14px;
     opacity: 0.95;
     margin: 0;
 }
 
-.epc-body {
+#epc-requirements-calc .epc-body {
     padding: 0;
     position: relative;
     z-index: 1;
 }
 
 /* Progress Section */
-.progress-section {
+#epc-requirements-calc .progress-section {
     background: #f8f9fa;
     padding: 20px 30px;
     border-bottom: 1px solid #e0e0e0;
 }
 
-.progress-text {
+#epc-requirements-calc .progress-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,14 +79,14 @@
     color: #666;
 }
 
-.progress {
+#epc-requirements-calc .progress {
     height: 6px;
     background: #e0e0e0;
     border-radius: 3px;
     overflow: hidden;
 }
 
-.progress-bar {
+#epc-requirements-calc .progress-bar {
     height: 100%;
     background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
     width: 0%;
@@ -87,12 +95,12 @@
 }
 
 /* Question Container */
-#epc-question-container {
+#epc-requirements-calc #epc-question-container {
     padding: 40px 30px;
     min-height: 400px;
 }
 
-.question-card {
+#epc-requirements-calc .question-card {
     animation: slideIn 0.3s ease;
 }
 
@@ -107,14 +115,14 @@
     }
 }
 
-.question-title {
+#epc-requirements-calc .question-title {
     font-size: 20px;
     color: #193966;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
-.info-box {
+#epc-requirements-calc .info-box {
     background: #e7f3ff;
     border-left: 4px solid #0d6efd;
     padding: 12px 15px;
@@ -125,13 +133,13 @@
     line-height: 1.5;
 }
 
-.info-box strong {
+#epc-requirements-calc .info-box strong {
     color: #084298;
     font-weight: 600;
 }
 
 /* Answer Buttons */
-.answer-btn {
+#epc-requirements-calc .answer-btn {
     width: 100%;
     text-align: left;
     padding: 15px 18px;
@@ -143,38 +151,39 @@
     transition: all 0.3s ease;
 }
 
-.answer-btn:hover {
+#epc-requirements-calc .answer-btn:hover {
     border-color: #193966;
     background: #f8f9fa;
     transform: translateX(4px);
 }
 
-.answer-btn:focus {
+#epc-requirements-calc .answer-btn:focus {
     outline: none;
     border-color: #193966;
     box-shadow: 0 0 0 3px rgba(25, 57, 102, 0.1);
 }
 
-.answer-btn.btn-yes {
+#epc-requirements-calc .answer-btn.btn-yes {
     border-color: #28a745;
     background: #f0f9f4;
 }
 
-.answer-btn.btn-yes:hover {
+#epc-requirements-calc .answer-btn.btn-yes:hover {
     border-color: #28a745;
     background: #e0f5ea;
 }
 
-.answer-btn-title {
+#epc-requirements-calc .answer-btn-title {
     color: #193966;
     margin-bottom: 4px;
+    font-weight: 600;
 }
 
-.answer-btn.btn-yes .answer-btn-title {
+#epc-requirements-calc .answer-btn.btn-yes .answer-btn-title {
     color: #28a745;
 }
 
-.answer-btn-desc {
+#epc-requirements-calc .answer-btn-desc {
     font-size: 12px;
     color: #666;
     line-height: 1.4;
@@ -182,46 +191,46 @@
 }
 
 /* Result Styles */
-.result-box {
+#epc-requirements-calc .result-box {
     animation: slideIn 0.3s ease;
     border-radius: 8px;
     padding: 30px;
     border: 2px solid;
 }
 
-.result-required {
+#epc-requirements-calc .result-required {
     background: #fff5f5;
     border-color: #dc3545;
 }
 
-.result-not-required {
+#epc-requirements-calc .result-not-required {
     background: #f0f9f4;
     border-color: #28a745;
 }
 
-.result-wait {
+#epc-requirements-calc .result-wait {
     background: #f0f6ff;
     border-color: #0d6efd;
 }
 
-.result-header {
+#epc-requirements-calc .result-header {
     text-align: center;
     margin-bottom: 25px;
 }
 
-.result-header i {
+#epc-requirements-calc .result-header i {
     display: block;
     font-size: 3em;
     margin-bottom: 15px;
 }
 
-.result-header h2 {
+#epc-requirements-calc .result-header h2 {
     font-size: 24px;
     margin: 0;
     font-weight: 700;
 }
 
-.warning-box {
+#epc-requirements-calc .warning-box {
     background: rgba(220, 53, 69, 0.1);
     border-left: 4px solid #dc3545;
     padding: 15px;
@@ -229,18 +238,18 @@
     margin-bottom: 25px;
 }
 
-.warning-box p {
+#epc-requirements-calc .warning-box p {
     margin: 0 0 10px 0;
     color: #721c24;
     line-height: 1.6;
     font-size: 14px;
 }
 
-.warning-box p:last-child {
+#epc-requirements-calc .warning-box p:last-child {
     margin-bottom: 0;
 }
 
-.penalty-box {
+#epc-requirements-calc .penalty-box {
     background: rgba(220, 53, 69, 0.15);
     padding: 12px;
     border-radius: 4px;
@@ -248,18 +257,18 @@
     border-left: 3px solid #dc3545;
 }
 
-.penalty-box p {
+#epc-requirements-calc .penalty-box p {
     margin: 6px 0;
     font-size: 13px;
     color: #721c24;
 }
 
-.penalty-box p:first-child {
+#epc-requirements-calc .penalty-box p:first-child {
     margin-top: 0;
     font-weight: 600;
 }
 
-.action-box {
+#epc-requirements-calc .action-box {
     background: rgba(255, 255, 255, 0.6);
     padding: 20px;
     border-radius: 6px;
@@ -267,37 +276,37 @@
     border: 1px solid rgba(25, 57, 102, 0.1);
 }
 
-.action-box h4 {
+#epc-requirements-calc .action-box h4 {
     color: #193966;
     margin: 0 0 12px 0;
     font-size: 16px;
     font-weight: 600;
 }
 
-.action-box ol,
-.action-box ul {
+#epc-requirements-calc .action-box ol,
+#epc-requirements-calc .action-box ul {
     margin-left: 20px;
     padding: 0;
     line-height: 1.8;
 }
 
-.action-box li {
+#epc-requirements-calc .action-box li {
     margin-bottom: 8px;
     color: #333;
     font-size: 14px;
 }
 
-.action-box a {
+#epc-requirements-calc .action-box a {
     color: #0d6efd;
     text-decoration: none;
     font-weight: 500;
 }
 
-.action-box a:hover {
+#epc-requirements-calc .action-box a:hover {
     text-decoration: underline;
 }
 
-.cta-box {
+#epc-requirements-calc .cta-box {
     background: linear-gradient(135deg, rgba(25, 57, 102, 0.08), rgba(44, 99, 177, 0.08));
     border: 2px solid #193966;
     padding: 20px;
@@ -305,7 +314,7 @@
     margin-bottom: 20px;
 }
 
-.cta-box h4 {
+#epc-requirements-calc .cta-box h4 {
     color: #193966;
     margin: 0 0 8px 0;
     font-size: 16px;
@@ -315,20 +324,20 @@
     gap: 10px;
 }
 
-.cta-box p {
+#epc-requirements-calc .cta-box p {
     color: #555;
     margin: 0 0 15px 0;
     font-size: 14px;
     line-height: 1.5;
 }
 
-.contact-buttons {
+#epc-requirements-calc .contact-buttons {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-.whatsapp-btn {
+#epc-requirements-calc .whatsapp-btn {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -347,17 +356,19 @@
     cursor: pointer;
 }
 
-.whatsapp-btn:hover {
+#epc-requirements-calc .whatsapp-btn:hover {
     background: #20ba57;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    color: white;
+    text-decoration: none;
 }
 
-.whatsapp-btn i {
+#epc-requirements-calc .whatsapp-btn i {
     font-size: 18px;
 }
 
-.deadline-highlight {
+#epc-requirements-calc .deadline-highlight {
     background: #fff3cd;
     border-left: 4px solid #ffc107;
     padding: 12px 15px;
@@ -367,12 +378,12 @@
     color: #856404;
 }
 
-.deadline-highlight strong {
+#epc-requirements-calc .deadline-highlight strong {
     color: #ff6600;
 }
 
 /* Button Group */
-.button-group {
+#epc-requirements-calc .button-group {
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -380,7 +391,7 @@
     flex-wrap: wrap;
 }
 
-.btn {
+#epc-requirements-calc .btn {
     padding: 12px 28px;
     border: none;
     border-radius: 6px;
@@ -389,30 +400,31 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-weight: 600;
 }
 
-.btn-reset {
+#epc-requirements-calc .btn-reset {
     background: #6c757d;
     color: white;
 }
 
-.btn-reset:hover {
+#epc-requirements-calc .btn-reset:hover {
     background: #5a6268;
     transform: translateY(-2px);
 }
 
-.btn-primary {
+#epc-requirements-calc .btn-primary {
     background: #193966;
     color: white;
 }
 
-.btn-primary:hover {
+#epc-requirements-calc .btn-primary:hover {
     background: #142852;
     transform: translateY(-2px);
 }
 
 /* Footer */
-.epc-footer-note {
+#epc-requirements-calc .epc-footer-note {
     background: #f8f9fa;
     padding: 20px 30px;
     border-top: 1px solid #e0e0e0;
@@ -423,108 +435,108 @@
     z-index: 1;
 }
 
-.epc-footer-note p {
+#epc-requirements-calc .epc-footer-note p {
     margin: 6px 0;
 }
 
-.epc-footer-note a {
+#epc-requirements-calc .epc-footer-note a {
     color: #0d6efd;
     text-decoration: none;
     font-weight: 500;
 }
 
-.epc-footer-note a:hover {
+#epc-requirements-calc .epc-footer-note a:hover {
     text-decoration: underline;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .epc-container {
+    #epc-requirements-calc .epc-container {
         margin: 20px;
         border-radius: 8px;
     }
 
-    .epc-header {
+    #epc-requirements-calc .epc-header {
         padding: 30px 20px;
     }
 
-    .epc-header h1 {
+    #epc-requirements-calc .epc-header h1 {
         font-size: 24px;
     }
 
-    #epc-question-container {
+    #epc-requirements-calc #epc-question-container {
         padding: 25px 20px;
         min-height: auto;
     }
 
-    .question-title {
+    #epc-requirements-calc .question-title {
         font-size: 18px;
         margin-bottom: 15px;
     }
 
-    .answer-btn {
+    #epc-requirements-calc .answer-btn {
         padding: 12px 15px;
         margin-bottom: 10px;
     }
 
-    .contact-buttons {
+    #epc-requirements-calc .contact-buttons {
         flex-direction: column;
     }
 
-    .whatsapp-btn {
+    #epc-requirements-calc .whatsapp-btn {
         min-width: auto;
     }
 
-    .result-box {
+    #epc-requirements-calc .result-box {
         padding: 20px;
     }
 
-    .result-header i {
+    #epc-requirements-calc .result-header i {
         font-size: 2.5em;
         margin-bottom: 12px;
     }
 
-    .result-header h2 {
+    #epc-requirements-calc .result-header h2 {
         font-size: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    .epc-header {
+    #epc-requirements-calc .epc-header {
         padding: 25px 15px;
     }
 
-    .epc-header h1 {
+    #epc-requirements-calc .epc-header h1 {
         font-size: 20px;
         margin-bottom: 5px;
     }
 
-    .epc-header p {
+    #epc-requirements-calc .epc-header p {
         font-size: 12px;
     }
 
-    .progress-section {
+    #epc-requirements-calc .progress-section {
         padding: 15px 20px;
     }
 
-    #epc-question-container {
+    #epc-requirements-calc #epc-question-container {
         padding: 20px 15px;
     }
 
-    .question-title {
+    #epc-requirements-calc .question-title {
         font-size: 16px;
     }
 
-    .action-box,
-    .cta-box {
+    #epc-requirements-calc .action-box,
+    #epc-requirements-calc .cta-box {
         padding: 15px;
     }
 
-    .button-group {
+    #epc-requirements-calc .button-group {
         gap: 8px;
     }
 
-    .btn {
+    #epc-requirements-calc .btn {
         padding: 10px 20px;
         font-size: 13px;
     }
