@@ -2,6 +2,38 @@ html {
   scroll-behavior: smooth;
 }
 
+body{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+}
+
+p, li, ul{
+ font-size: 1em;
+}
+h1{
+ font-size: 2.5em; 
+}
+h2{
+ font-size: 2.0em;
+}
+h3{
+ font-size: 1.75em;
+}
+h4{
+ font-size: 1.5em;
+}
+
+.owner-quote{
+    font-style: italic;
+    margin: 1.5em 1em;
+    padding: 1em;
+    border-left: 2px solid #193966;
+    color: #424242;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+
 .btn-square {
   border-radius: 0px;
 }
@@ -322,6 +354,23 @@ fieldset[disabled] .btn-solid-ee-green.active {
 
 /* Sections EE */
 
+.section{
+  padding: 3em 0;
+
+}
+
+.page-header{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0; margin: 0;
+  background-image: url(../../assets/img/banners/hero.png);
+  max-height: 896px;
+  
+}
+
 .page-header.section-ee-dark .content-center,
 .page-header.section-ee-dark .category-absolute {
   z-index: 1;
@@ -334,7 +383,9 @@ fieldset[disabled] .btn-solid-ee-green.active {
 }
 
 .section-ee-dark {
+  
   background-color: #193966;
+  
 }
 
 .section-ee-dark .icons-container {
@@ -809,4 +860,9 @@ top: 320px;
 }
 .info-icon-blue {
     color:#193966;
+}
+
+.copyright{
+    font-size: small;
+    color: white;
 }

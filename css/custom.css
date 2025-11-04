@@ -15,9 +15,6 @@
 /* Transparent state (over hero section) */
 .navbar-transparent {
     background: transparent !important;
-    /*background-color: rgba(25, 57, 102, 0.5) !important;
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);*/
 }
 
 /* Solid state (scrolled past hero) */
@@ -30,12 +27,12 @@
 /* Navbar logo scaling */
 .nav-logo {
     transition: height 0.4s ease, transform 0.4s ease;
-    height: 50px;
+    max-height: 100%;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .navbar-scrolled .nav-logo {
-    height: 40px;
+    max-height: 3em;
 }
 
 /* Navbar links styling */
@@ -82,7 +79,6 @@
 
 /* Contact Us button - always styled */
 .navbar-nav .btn-ee-blue {
-    font-weight: 600;
     color: #fff !important;
     background-color: #2c63b1;
     border: 2px solid #2c63b1;
@@ -221,10 +217,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Ensure content doesn't go behind navbar */
-body {
-    padding-top: 80px;
-}
 
 @media (max-width: 991px) {
     body {
@@ -271,10 +263,13 @@ body {
 }
 
 /* About section styling */
+#about.section{
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+}
+
+
 .description {
-    font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 20px;
 }
 
 hr {
