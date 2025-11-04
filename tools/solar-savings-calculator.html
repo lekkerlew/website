@@ -1,103 +1,102 @@
+<!-- Solar Calculator Content (Inner content only, no wrapper) -->
+<button type="button" class="calc-close-btn" aria-label="Close Calculator">&times;</button>
+<div class="container">
+    <div class="background-grid"></div>
+    <div class="header">
+        <h1 class="title">SOLAR SAVINGS CALCULATOR</h1>
+        <p class="subtitle">Advanced South African Solar System Calculator</p>
+        <p class="subtitle">Disclaimer:</p>
+        <p class="subtitle">Please Contact Us For a Proper Assessment</p>
+        <p class="subtitle">This is Merely a Fun Tool to Play Around With</p>
+    </div>
 
-    <div class="container">
-        <div class="background-grid"></div>
-        <div class="header">
-            <h1 class="title">SOLAR SAVINGS CALCULATOR</h1>
-            <p class="subtitle">Advanced South African Solar System Calculator</p>
-            <p class="subtitle">Disclaimer:</p>
-            <p class="subtitle">Please Contact Us For a Proper Assessment</p>
-            <p class="subtitle">This is Merely a Fun Tool to Play Around With</p>
-        </div>
-
-        <div class="two-column">
-            <div class="calculator-panel">
-                <div class="input-group">
-                    <label class="input-label">Select Province</label>
-                    <div class="select-wrapper">
-                        <select id="province">
-                            <option value="">Choose your province...</option>
-                            <option value="western-cape">Western Cape</option>
-                            <option value="northern-cape">Northern Cape</option>
-                            <option value="eastern-cape">Eastern Cape</option>
-                            <option value="kwazulu-natal">KwaZulu-Natal</option>
-                            <option value="free-state">Free State</option>
-                            <option value="gauteng">Gauteng</option>
-                            <option value="mpumalanga">Mpumalanga</option>
-                            <option value="limpopo">Limpopo</option>
-                            <option value="north-west">North West</option>
-                        </select>
-                    </div>
+    <div class="two-column">
+        <div class="calculator-panel">
+            <div class="input-group">
+                <label class="input-label">Select Province</label>
+                <div class="select-wrapper">
+                    <select id="province">
+                        <option value="">Choose your province...</option>
+                        <option value="western-cape">Western Cape</option>
+                        <option value="northern-cape">Northern Cape</option>
+                        <option value="eastern-cape">Eastern Cape</option>
+                        <option value="kwazulu-natal">KwaZulu-Natal</option>
+                        <option value="free-state">Free State</option>
+                        <option value="gauteng">Gauteng</option>
+                        <option value="mpumalanga">Mpumalanga</option>
+                        <option value="limpopo">Limpopo</option>
+                        <option value="north-west">North West</option>
+                    </select>
                 </div>
-
-                <div class="input-group">
-                    <label class="input-label">Inverter Size</label>
-                    <div class="select-wrapper">
-                        <select id="inverter">
-                            <option value="">Select inverter size...</option>
-                            <option value="5">5 kW</option>
-                            <option value="8">8 kW</option>
-                            <option value="10">10 kW</option>
-                            <option value="12">12 kW</option>
-                            <option value="16">16 kW</option>
-                            <option value="20">20 kW</option>
-                            <option value="30">30 kW</option>
-                            <option value="50">50 kW</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Solar Panels (595W each)</label>
-                    <div class="select-wrapper">
-                        <select id="panels">
-                            <option value="">Select number of panels...</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Battery Backup</label>
-                    <div class="slider-container">
-                        <input type="range" id="battery" class="slider" min="0" max="20" value="0" step="1" disabled>
-                        <div class="slider-value" id="battery-value">0 kWh</div>
-                    </div>
-                </div>
-
-                <button class="calculate-btn" id="calculate-btn" disabled>Calculate Savings</button>
             </div>
 
-            <div class="calculator-panel">
-                <div class="loading" id="loading">
-                    <div class="loading-spinner"></div>
-                    <p>Calculating your solar savings...</p>
+            <div class="input-group">
+                <label class="input-label">Inverter Size</label>
+                <div class="select-wrapper">
+                    <select id="inverter">
+                        <option value="">Select inverter size...</option>
+                        <option value="5">5 kW</option>
+                        <option value="8">8 kW</option>
+                        <option value="10">10 kW</option>
+                        <option value="12">12 kW</option>
+                        <option value="16">16 kW</option>
+                        <option value="20">20 kW</option>
+                        <option value="30">30 kW</option>
+                        <option value="50">50 kW</option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="results-panel" id="results">
-                    <h3 style="color: #00ffff; margin-bottom: 20px; text-align: center;">SYSTEM CONFIGURATION</h3>
-                    <div class="system-summary">
-                        <div class="stat-card">
-                            <span class="stat-value" id="total-panels">0</span>
-                            <span class="stat-label">Solar Panels</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-value" id="total-kwp">0 kWp</span>
-                            <span class="stat-label">Solar Capacity</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-value" id="total-battery">0 kWh</span>
-                            <span class="stat-label">Battery Storage</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-value" id="monthly-savings">R 0</span>
-                            <span class="stat-label">Avg Monthly Savings</span>
-                        </div>
+            <div class="input-group">
+                <label class="input-label">Solar Panels (595W each)</label>
+                <div class="select-wrapper">
+                    <select id="panels">
+                        <option value="">Select number of panels...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Battery Backup</label>
+                <div class="slider-container">
+                    <input type="range" id="battery" class="slider" min="0" max="20" value="0" step="1" disabled>
+                    <div class="slider-value" id="battery-value">0 kWh</div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" id="calculate-btn" disabled>Calculate Savings</button>
+        </div>
+
+        <div class="calculator-panel">
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Calculating your solar savings...</p>
+            </div>
+
+            <div class="results-panel" id="results">
+                <h3 style="color: #00ffff; margin-bottom: 20px; text-align: center;">SYSTEM CONFIGURATION</h3>
+                <div class="system-summary">
+                    <div class="stat-card">
+                        <span class="stat-value" id="total-panels">0</span>
+                        <span class="stat-label">Solar Panels</span>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="savings-chart"></canvas>
+                    <div class="stat-card">
+                        <span class="stat-value" id="total-kwp">0 kWp</span>
+                        <span class="stat-label">Solar Capacity</span>
                     </div>
-                    <button class="back-btn" id="back-btn">Back to Main Page</button>
+                    <div class="stat-card">
+                        <span class="stat-value" id="total-battery">0 kWh</span>
+                        <span class="stat-label">Battery Storage</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="monthly-savings">R 0</span>
+                        <span class="stat-label">Avg Monthly Savings</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="savings-chart"></canvas>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
