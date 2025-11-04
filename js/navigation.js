@@ -128,10 +128,62 @@
         // Initial check
         updateActiveLink();
 
-        // --- CALCULATOR VISIBILITY LOGIC ---
+        // --- CALCULATOR LOADING AND VISIBILITY LOGIC ---
         const mainContent = document.querySelector('.main');
         const solarCalcDiv = document.getElementById('solar-cost-calc');
         const epcCalcDiv = document.getElementById('epc-requirements-calc');
+
+        /**
+         * Load calculator HTML content
+         */
+        function loadCalculator(filePath, targetDiv) {
+            console.log('Loading calculator from:', filePath);
+            
+            return fetch(filePath)
+                .then(response => {
+                    console.log('Fetch response:', response.status, response.statusText);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load calculator: ${response.status} ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    console.log('HTML loaded, length:', html.length);
+                    targetDiv.innerHTML = html;
+                    console.log(`Calculator loaded successfully: ${filePath}`);
+                    
+                    // Re-initialize calculator JavaScript after loading HTML
+                    if (filePath.includes('solar-savings')) {
+                        console.log('Triggering solar calculator initialization');
+                        // Solar calculator initializes automatically via its script
+                        const event = new Event('solarCalculatorLoaded');
+                        document.dispatchEvent(event);
+                        
+                        // Also try direct initialization if available
+                        if (typeof initSolarCalculator === 'function') {
+                            setTimeout(initSolarCalculator, 100);
+                        }
+                    } else if (filePath.includes('epc-requirements')) {
+                        console.log('Triggering EPC calculator initialization');
+                        // EPC calculator initializes automatically via its script
+                        setTimeout(() => {
+                            if (window.epcCalculator && window.epcCalculator.init) {
+                                window.epcCalculator.init();
+                            }
+                        }, 100);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error loading calculator from ${filePath}:`, error);
+                    targetDiv.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: #dc3545; background: white; border-radius: 8px; margin: 20px;">
+                            <h3>Error Loading Calculator</h3>
+                            <p>Sorry, we couldn't load the calculator. Please refresh the page and try again.</p>
+                            <p style="font-size: 0.9em; color: #6c757d;">Error: ${error.message}</p>
+                        </div>
+                    `;
+                });
+        }
 
         /**
          * Hide all content sections
@@ -162,7 +214,7 @@
         /**
          * Show specific calculator
          */
-        function showCalculator(calcDiv) {
+        function showCalculator(calcDiv, filePath) {
             if (!calcDiv) return;
 
             // Hide the other calculator
@@ -172,21 +224,42 @@
                 solarCalcDiv.style.display = 'none';
             }
 
-            // Show the current calculator
-            calcDiv.style.display = 'block';
-            hideAllContent();
-            
-            // Scroll to calculator with proper offset
-            setTimeout(() => {
-                const navbarHeight = navbar.offsetHeight;
-                const targetPosition = calcDiv.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = targetPosition - navbarHeight - 20;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
+            // Load calculator HTML if not already loaded
+            if (!calcDiv.innerHTML.trim()) {
+                loadCalculator(filePath, calcDiv).then(() => {
+                    // Show the calculator after loading
+                    calcDiv.style.display = 'block';
+                    hideAllContent();
+                    
+                    // Scroll to calculator with proper offset
+                    setTimeout(() => {
+                        const navbarHeight = navbar.offsetHeight;
+                        const targetPosition = calcDiv.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = targetPosition - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
                 });
-            }, 100);
+            } else {
+                // Show the calculator if already loaded
+                calcDiv.style.display = 'block';
+                hideAllContent();
+                
+                // Scroll to calculator with proper offset
+                setTimeout(() => {
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = calcDiv.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = targetPosition - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
         }
 
         /**
@@ -206,11 +279,14 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                const targetDivId = link.dataset.targetDiv;
+                const filePath = link.getAttribute('href');
+                const targetDivId = link.getAttribute('data-target-div');
                 const targetDiv = document.querySelector(targetDivId);
 
-                if (targetDiv) {
-                    showCalculator(targetDiv);
+                console.log('Calculator link clicked:', { filePath, targetDivId, targetDiv });
+
+                if (targetDiv && filePath) {
+                    showCalculator(targetDiv, filePath);
                     
                     // Close mobile menu if open
                     if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
