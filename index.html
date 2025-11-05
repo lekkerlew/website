@@ -2,7 +2,7 @@
 <html lang="en-ZA">
 <head>
     <meta charset="utf-8">
-    <link href="assets/img/favicon/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="./assets/img/favicon/favicon.png" rel="icon" type="image/png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" />
 
@@ -26,9 +26,17 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="./assets/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="./assets/css/ee.css" as="style">
+    
+    <!-- Preload hero image - CRITICAL for LCP -->
+    <link rel="preload" 
+          as="image" 
+          href="./assets/img/banners/hero.png"
+          fetchpriority="high">
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS Files - Load in specific order -->
@@ -75,9 +83,15 @@
     <!-- Custom JavaScript -->
     <script src="./js/loader.js"></script>
     <script src="./js/navigation.js"></script>
+    <script src="./js/gallery.js"></script>  <!-- NEW: Gallery functionality -->
     <script src="./js/form.js"></script>
     <script src="./js/cookies.js"></script>
     <script src="./js/main.js"></script>
+    
+    <!-- Calculator JavaScript - Loaded dynamically when needed -->
+    <!-- COMMENTED OUT: These will be loaded when calculator HTML is loaded -->
+    <!-- <script src="./tools/js/solar-savings-calculator.js"></script> -->
+    <!-- <script src="./tools/js/epc-requirements-calculator.js"></script> -->
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
