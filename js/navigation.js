@@ -304,30 +304,7 @@
         }
 
         /**
-         * Hide all content sections
-         */
-        function hideAllContent() {
-            const elements = getCalculatorElements();
-            console.log('hideAllContent - main content element:', elements.mainContent ? 'found' : 'NOT FOUND');
-            if (elements.mainContent) {
-                console.log('Hiding main content, current display:', elements.mainContent.style.display);
-                elements.mainContent.style.display = 'none';
-                console.log('Main content hidden, new display:', elements.mainContent.style.display);
-            }
-        }
-
-        /**
-         * Show all content sections
-         */
-        function showAllContent() {
-            const elements = getCalculatorElements();
-            if (elements.mainContent) {
-                elements.mainContent.style.display = '';
-            }
-        }
-
-        /**
-         * Show specific calculator
+         * Show specific calculator as modal overlay
          */
         function showCalculator(calcDiv, filePath) {
             if (!calcDiv) {
@@ -336,9 +313,6 @@
             }
 
             console.log('showCalculator called for:', calcDiv.id);
-            console.log('Current display:', calcDiv.style.display);
-            console.log('Computed display:', window.getComputedStyle(calcDiv).display);
-            console.log('Has content:', calcDiv.innerHTML.length > 0);
 
             // Get fresh references to calculator elements
             const elements = getCalculatorElements();
@@ -346,90 +320,46 @@
             // Hide the other calculator
             if (calcDiv === elements.solarCalcDiv && elements.epcCalcDiv) {
                 console.log('Hiding EPC calculator');
-                elements.epcCalcDiv.style.display = 'none';
+                elements.epcCalcDiv.classList.remove('active');
             } else if (calcDiv === elements.epcCalcDiv && elements.solarCalcDiv) {
                 console.log('Hiding Solar calculator');
-                elements.solarCalcDiv.style.display = 'none';
+                elements.solarCalcDiv.classList.remove('active');
             }
 
             // Load calculator HTML if not already loaded
             if (!calcDiv.innerHTML.trim()) {
                 console.log('Calculator div is empty, loading HTML...');
                 loadCalculator(filePath, calcDiv).then(() => {
-                    // Show the calculator after loading
-                    console.log('Setting display to block for:', calcDiv.id);
+                    // Show the calculator modal after loading
+                    console.log('Adding active class to:', calcDiv.id);
+                    calcDiv.classList.add('active');
                     
-                    // Remove the style attribute entirely, then set display
-                    calcDiv.removeAttribute('style');
-                    calcDiv.style.display = 'block';
-                    
-                    // Also try setAttribute as backup
-                    calcDiv.setAttribute('style', 'display: block !important;');
-                    
-                    console.log('After setting - style attr:', calcDiv.getAttribute('style'));
-                    console.log('After setting - style.display:', calcDiv.style.display);
-                    console.log('After setting - computed:', window.getComputedStyle(calcDiv).display);
-                    
-                    hideAllContent();
-                    
-                    // Scroll to calculator with proper offset
-                    setTimeout(() => {
-                        const navbarHeight = navbar.offsetHeight;
-                        const targetPosition = calcDiv.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = targetPosition - navbarHeight - 20;
-                        
-                        console.log('Scrolling to calculator, offset:', offsetPosition);
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }, 100);
+                    // Scroll modal to top
+                    calcDiv.scrollTop = 0;
                 });
             } else {
-                console.log('Calculator already loaded, just showing it...');
-                // Show the calculator if already loaded
-                console.log('Setting display to block for:', calcDiv.id);
-                console.log('BEFORE - style attr:', calcDiv.getAttribute('style'));
-                console.log('BEFORE - style.display:', calcDiv.style.display);
+                console.log('Calculator already loaded, showing modal...');
+                // Show the calculator modal
+                calcDiv.classList.add('active');
                 
-                // Remove the style attribute entirely, then set display
-                calcDiv.removeAttribute('style');
-                calcDiv.style.display = 'block';
-                
-                // Also try setAttribute as backup
-                calcDiv.setAttribute('style', 'display: block !important;');
-                
-                console.log('AFTER - style attr:', calcDiv.getAttribute('style'));
-                console.log('AFTER - style.display:', calcDiv.style.display);
-                console.log('AFTER - computed:', window.getComputedStyle(calcDiv).display);
-                console.log('Hiding main content...');
-                hideAllContent();
-                
-                // Scroll to calculator with proper offset
-                setTimeout(() => {
-                    const navbarHeight = navbar.offsetHeight;
-                    const targetPosition = calcDiv.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = targetPosition - navbarHeight - 20;
-                    
-                    console.log('Scrolling to calculator, offset:', offsetPosition);
-                    console.log('Calc div top:', calcDiv.getBoundingClientRect().top);
-                    console.log('Page Y offset:', window.pageYOffset);
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }, 100);
+                // Scroll modal to top
+                calcDiv.scrollTop = 0;
             }
         }
 
         /**
-         * Hide all calculators
+         * Hide all calculators (close modals)
          */
         function hideAllCalculators() {
             const elements = getCalculatorElements();
-            if (elements.solarCalcDiv) elements.solarCalcDiv.style.display = 'none';
-            if (elements.epcCalcDiv) elements.epcCalcDiv.style.display = 'none';
-            showAllContent();
+            if (elements.solarCalcDiv) {
+                console.log('Removing active class from solar calc');
+                elements.solarCalcDiv.classList.remove('active');
+            }
+            if (elements.epcCalcDiv) {
+                console.log('Removing active class from EPC calc');
+                elements.epcCalcDiv.classList.remove('active');
+            }
         }
 
         /**
@@ -498,13 +428,8 @@
          */
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('calc-close-btn')) {
+                console.log('Close button clicked');
                 hideAllCalculators();
-                
-                // Scroll back to top smoothly
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
             }
         });
 
