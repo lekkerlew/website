@@ -6,14 +6,10 @@
     'use strict';
 
     function initNavigation() {
-        console.log('=== Navigation Initialization Started ===');
         const navbar = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbarCollapse = document.querySelector('.navbar-collapse');
-
-        console.log('Navigation elements:', { navbar, navLinks: navLinks.length, navbarToggler, navbarCollapse });
-
         if (!navbar) {
             console.error('Navbar not found!');
             return;
@@ -133,9 +129,6 @@
         window.addEventListener('scroll', updateActiveLink);
         // Initial check
         updateActiveLink();
-
-        // --- CALCULATOR LOADING AND VISIBILITY LOGIC ---
-        console.log('Setting up calculator logic...');
         
         // Function to get calculator elements (may not be in DOM immediately)
         function getCalculatorElements() {
@@ -174,11 +167,7 @@
         ensureCalculatorDivsExist();
         
         let calcElements = getCalculatorElements();
-        console.log('Calculator elements:', {
-            mainContent: calcElements.mainContent ? 'found' : 'NOT FOUND',
-            solarCalcDiv: calcElements.solarCalcDiv ? 'found' : 'NOT FOUND',
-            epcCalcDiv: calcElements.epcCalcDiv ? 'found' : 'NOT FOUND'
-        });
+    
         
         // If elements still not found after creation attempt, retry
         if (!calcElements.solarCalcDiv || !calcElements.epcCalcDiv) {
@@ -186,11 +175,7 @@
             setTimeout(() => {
                 ensureCalculatorDivsExist();
                 calcElements = getCalculatorElements();
-                console.log('Retry - Calculator elements:', {
-                    mainContent: calcElements.mainContent ? 'found' : 'NOT FOUND',
-                    solarCalcDiv: calcElements.solarCalcDiv ? 'found' : 'NOT FOUND',
-                    epcCalcDiv: calcElements.epcCalcDiv ? 'found' : 'NOT FOUND'
-                });
+                
             }, 500);
         }
 
@@ -202,16 +187,13 @@
                 // Check if script already loaded
                 const existing = document.querySelector(`script[src="${scriptPath}"]`);
                 if (existing) {
-                    console.log('Script already loaded:', scriptPath);
                     resolve();
                     return;
                 }
                 
-                console.log('Loading script:', scriptPath);
                 const script = document.createElement('script');
                 script.src = scriptPath;
                 script.onload = () => {
-                    console.log('Script loaded successfully:', scriptPath);
                     resolve();
                 };
                 script.onerror = () => {
@@ -226,7 +208,6 @@
          * Load calculator HTML content
          */
         function loadCalculator(filePath, targetDiv) {
-            console.log(`Loading calculator from: ${filePath}`);
             
             // Determine which JS file to load
             let scriptPath = '';
@@ -238,25 +219,20 @@
             
             return fetch(filePath)
                 .then(response => {
-                    console.log('Fetch response:', response.status, response.statusText);
                     if (!response.ok) {
                         throw new Error(`Failed to load calculator: ${response.status}`);
                     }
                     return response.text();
                 })
                 .then(html => {
-                    console.log(`HTML loaded, length: ${html.length} characters`);
                     targetDiv.innerHTML = html;
-                    console.log('HTML injected into div');
                     
                     // Load the calculator JavaScript file
                     if (scriptPath) {
-                        console.log('Loading calculator script...');
                         return loadCalculatorScript(scriptPath);
                     }
                 })
                 .then(() => {
-                    console.log('Calculator ready for initialization');
                     
                     // Wait a bit for script to execute, then initialize
                     return new Promise(resolve => setTimeout(resolve, 300));
@@ -264,30 +240,25 @@
                 .then(() => {
                     // Re-initialize calculator after script loads
                     if (filePath.includes('solar-savings')) {
-                        console.log('Initializing solar calculator...');
                         const province = document.getElementById('province');
-                        console.log('Solar calc province element:', !!province);
                         
                         if (typeof initSolarCalculator === 'function') {
-                            console.log('Calling initSolarCalculator()');
                             initSolarCalculator();
                         } else {
                             console.log('initSolarCalculator not defined, script should auto-init');
                         }
                     } else if (filePath.includes('epc-requirements')) {
-                        console.log('Initializing EPC calculator...');
                         const epcContainer = document.getElementById('epc-question-container');
-                        console.log('EPC container exists:', !!epcContainer);
                         
                         if (epcContainer) {
                             console.log('Container found! Calling epcCalculator.init()');
                             if (window.epcCalculator && window.epcCalculator.init) {
                                 window.epcCalculator.init();
                             } else {
-                                console.error('epcCalculator.init not available after script load');
+                                console.error('epcCalculator.init not available');
                             }
                         } else {
-                            console.error('EPC container still not found after HTML injection');
+                            console.error('EPC container error');
                         }
                     }
                 })
@@ -312,33 +283,27 @@
                 return;
             }
 
-            console.log('showCalculator called for:', calcDiv.id);
 
             // Get fresh references to calculator elements
             const elements = getCalculatorElements();
             
             // Hide the other calculator
             if (calcDiv === elements.solarCalcDiv && elements.epcCalcDiv) {
-                console.log('Hiding EPC calculator');
                 elements.epcCalcDiv.classList.remove('active');
             } else if (calcDiv === elements.epcCalcDiv && elements.solarCalcDiv) {
-                console.log('Hiding Solar calculator');
                 elements.solarCalcDiv.classList.remove('active');
             }
 
             // Load calculator HTML if not already loaded
             if (!calcDiv.innerHTML.trim()) {
-                console.log('Calculator div is empty, loading HTML...');
                 loadCalculator(filePath, calcDiv).then(() => {
                     // Show the calculator modal after loading
-                    console.log('Adding active class to:', calcDiv.id);
                     calcDiv.classList.add('active');
                     
                     // Scroll modal to top
                     calcDiv.scrollTop = 0;
                 });
             } else {
-                console.log('Calculator already loaded, showing modal...');
                 // Show the calculator modal
                 calcDiv.classList.add('active');
                 
@@ -353,11 +318,9 @@
         function hideAllCalculators() {
             const elements = getCalculatorElements();
             if (elements.solarCalcDiv) {
-                console.log('Removing active class from solar calc');
                 elements.solarCalcDiv.classList.remove('active');
             }
             if (elements.epcCalcDiv) {
-                console.log('Removing active class from EPC calc');
                 elements.epcCalcDiv.classList.remove('active');
             }
         }
@@ -366,9 +329,7 @@
          * Handle calculator dropdown link clicks
          */
         function setupCalculatorLinks() {
-            console.log('Setting up calculator link handlers...');
             const calcLinks = document.querySelectorAll('.calc-loader-link');
-            console.log('Found calculator links:', calcLinks.length);
             
             if (calcLinks.length === 0) {
                 console.warn('No calculator links found yet, will retry...');
@@ -376,14 +337,9 @@
             }
             
             calcLinks.forEach((link, index) => {
-                console.log(`Calculator link ${index + 1}:`, {
-                    href: link.getAttribute('href'),
-                    targetDiv: link.getAttribute('data-target-div'),
-                    text: link.textContent.trim()
-                });
+
                 
                 link.addEventListener('click', (e) => {
-                    console.log('Calculator link clicked!');
                     e.preventDefault();
                     e.stopPropagation();
 
@@ -391,10 +347,7 @@
                     const targetDivId = link.getAttribute('data-target-div');
                     const targetDiv = document.querySelector(targetDivId);
 
-                    console.log('Click details:', { filePath, targetDivId, targetDiv });
-
                     if (targetDiv && filePath) {
-                        console.log('Showing calculator...');
                         showCalculator(targetDiv, filePath);
                         
                         // Close mobile menu if open
@@ -419,7 +372,6 @@
         // Try to setup links immediately
         if (!setupCalculatorLinks()) {
             // If links not found, retry after a delay
-            console.log('Retrying calculator link setup in 500ms...');
             setTimeout(setupCalculatorLinks, 500);
         }
 
@@ -428,7 +380,6 @@
          */
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('calc-close-btn')) {
-                console.log('Close button clicked');
                 hideAllCalculators();
             }
         });

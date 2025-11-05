@@ -105,16 +105,16 @@
                             label: 'Monthly kWh Production',
                             data: province.irradiation.map(i=>parseFloat((i*totalKwp*30).toFixed(0))),
                             backgroundColor: 'rgba(0,255,255,0.6)',
-                            borderColor: '#00ffff',
+                            borderColor: '#193966',
                             borderWidth: 1
                         }]
                     },
                     options: {
                         responsive: true,
-                        plugins: { legend: { labels: { color: '#00ffff', font:{ size:14 } } } },
+                        plugins: { legend: { labels: { color: '#193966', font:{ size:14 } } } },
                         scales: {
-                            y: { ticks: { color:'#00ffff', beginAtZero:true }, grid: { color:'rgba(0,255,255,0.1)' } },
-                            x: { ticks: { color:'#00ffff' }, grid: { color:'rgba(0,255,255,0.1)' } }
+                            y: { ticks: { color:'#193966', beginAtZero:true }, grid: { color:'rgba(25,57,102,0.6)' } },
+                            x: { ticks: { color:'#193966' }, grid: { color:'rgba(25,57,102,0.4)' } }
                         }
                     }
                 });
