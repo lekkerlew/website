@@ -2,7 +2,7 @@
 <html lang="en-ZA">
 <head>
     <meta charset="utf-8">
-    <link href="./assets/img/favicon/favicon.png" rel="icon" type="image/png" />
+    <link href="./assets/img/favicon/favicon.ico" rel="icon" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" />
 
@@ -24,15 +24,9 @@
     <meta property="og:description" content="Expert Electrical, Solar, Automation, and Energy Efficiency services for homes and businesses across South Africa." />
     <meta property="og:image" content="https://www.eliteenergy.co.za/assets/img/logo/logo_fb.png" />
 
-    <!-- Preload critical resources -->
+    <!-- Preload critical CSS only -->
     <link rel="preload" href="./assets/css/bootstrap.min.css" as="style">
     <link rel="preload" href="./assets/css/ee.css" as="style">
-    
-    <!-- Preload hero image - CRITICAL for LCP -->
-    <link rel="preload" 
-          as="image" 
-          href="./assets/img/banners/hero.png"
-          fetchpriority="high">
 
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200&display=swap" rel="stylesheet" />
@@ -46,7 +40,6 @@
     <link href="./assets/css/ee.css" rel="stylesheet" />
     
     <!-- 3. Calculator-specific styles (scoped to prevent bleeding) -->
-    <!-- These are loaded but only apply within their respective calculator containers -->
     <link rel="stylesheet" href="./tools/css/epc-requirements-calculator.css">
     <link rel="stylesheet" href="./tools/css/solar-savings-calculator.css">
 </head>
@@ -83,15 +76,10 @@
     <!-- Custom JavaScript -->
     <script src="./js/loader.js"></script>
     <script src="./js/navigation.js"></script>
-    <script src="./js/gallery.js"></script>  <!-- NEW: Gallery functionality -->
+    <script src="./js/gallery.js"></script>
     <script src="./js/form.js"></script>
     <script src="./js/cookies.js"></script>
     <script src="./js/main.js"></script>
-    
-    <!-- Calculator JavaScript - Loaded dynamically when needed -->
-    <!-- COMMENTED OUT: These will be loaded when calculator HTML is loaded -->
-    <!-- <script src="./tools/js/solar-savings-calculator.js"></script> -->
-    <!-- <script src="./tools/js/epc-requirements-calculator.js"></script> -->
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">

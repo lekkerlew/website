@@ -39,17 +39,4 @@
         });
     });
 
-    // Register service worker for offline functionality (optional feature)
-    // Only attempt registration if service workers are supported
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js')
-                .then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                })
-                .catch(function(err) {
-                    console.debug('ServiceWorker not available or registration failed. This is optional and does not affect site functionality: ', err.message);
-                });
-        });
-    }
 })();
