@@ -155,7 +155,7 @@
                 console.warn('Creating missing #solar-cost-calc div');
                 solarDiv = document.createElement('div');
                 solarDiv.id = 'solar-cost-calc';
-                solarDiv.style.display = 'none';
+                solarDiv.style.display = 'none'; // Changed from 'hidden' to 'none'
                 document.body.appendChild(solarDiv);
             }
             
@@ -163,7 +163,7 @@
                 console.warn('Creating missing #epc-requirements-calc div');
                 epcDiv = document.createElement('div');
                 epcDiv.id = 'epc-requirements-calc';
-                epcDiv.style.display = 'none';
+                epcDiv.style.display = 'none'; // Changed from 'hidden' to 'none'
                 document.body.appendChild(epcDiv);
             }
             
@@ -195,10 +195,47 @@
         }
 
         /**
+         * Load calculator JavaScript file dynamically
+         */
+        function loadCalculatorScript(scriptPath) {
+            return new Promise((resolve, reject) => {
+                // Check if script already loaded
+                const existing = document.querySelector(`script[src="${scriptPath}"]`);
+                if (existing) {
+                    console.log('Script already loaded:', scriptPath);
+                    resolve();
+                    return;
+                }
+                
+                console.log('Loading script:', scriptPath);
+                const script = document.createElement('script');
+                script.src = scriptPath;
+                script.onload = () => {
+                    console.log('Script loaded successfully:', scriptPath);
+                    resolve();
+                };
+                script.onerror = () => {
+                    console.error('Failed to load script:', scriptPath);
+                    reject(new Error(`Failed to load ${scriptPath}`));
+                };
+                document.body.appendChild(script);
+            });
+        }
+
+        /**
          * Load calculator HTML content
          */
         function loadCalculator(filePath, targetDiv) {
             console.log(`Loading calculator from: ${filePath}`);
+            
+            // Determine which JS file to load
+            let scriptPath = '';
+            if (filePath.includes('solar-savings')) {
+                scriptPath = './tools/js/solar-savings-calculator.js';
+            } else if (filePath.includes('epc-requirements')) {
+                scriptPath = './tools/js/epc-requirements-calculator.js';
+            }
+            
             return fetch(filePath)
                 .then(response => {
                     console.log('Fetch response:', response.status, response.statusText);
@@ -212,38 +249,46 @@
                     targetDiv.innerHTML = html;
                     console.log('HTML injected into div');
                     
-                    // Re-initialize calculator JavaScript after loading HTML
+                    // Load the calculator JavaScript file
+                    if (scriptPath) {
+                        console.log('Loading calculator script...');
+                        return loadCalculatorScript(scriptPath);
+                    }
+                })
+                .then(() => {
+                    console.log('Calculator ready for initialization');
+                    
+                    // Wait a bit for script to execute, then initialize
+                    return new Promise(resolve => setTimeout(resolve, 300));
+                })
+                .then(() => {
+                    // Re-initialize calculator after script loads
                     if (filePath.includes('solar-savings')) {
                         console.log('Initializing solar calculator...');
-                        // Trigger solar calculator initialization
-                        setTimeout(() => {
-                            if (typeof initSolarCalculator === 'function') {
-                                console.log('Calling initSolarCalculator()');
-                                initSolarCalculator();
-                            } else {
-                                console.warn('initSolarCalculator function not found');
-                            }
-                        }, 100);
+                        const province = document.getElementById('province');
+                        console.log('Solar calc province element:', !!province);
+                        
+                        if (typeof initSolarCalculator === 'function') {
+                            console.log('Calling initSolarCalculator()');
+                            initSolarCalculator();
+                        } else {
+                            console.log('initSolarCalculator not defined, script should auto-init');
+                        }
                     } else if (filePath.includes('epc-requirements')) {
                         console.log('Initializing EPC calculator...');
-                        // Trigger EPC calculator initialization with longer delay
-                        setTimeout(() => {
-                            // Check if container exists before initializing
-                            const epcContainer = document.getElementById('epc-question-container');
-                            console.log('EPC question container check:', epcContainer ? 'FOUND' : 'NOT FOUND');
-                            
-                            if (!epcContainer) {
-                                console.error('EPC question container not found in loaded HTML!');
-                                console.log('Loaded HTML structure:', targetDiv.innerHTML.substring(0, 500));
-                            }
-                            
+                        const epcContainer = document.getElementById('epc-question-container');
+                        console.log('EPC container exists:', !!epcContainer);
+                        
+                        if (epcContainer) {
+                            console.log('Container found! Calling epcCalculator.init()');
                             if (window.epcCalculator && window.epcCalculator.init) {
-                                console.log('Calling epcCalculator.init()');
                                 window.epcCalculator.init();
                             } else {
-                                console.warn('epcCalculator.init not found');
+                                console.error('epcCalculator.init not available after script load');
                             }
-                        }, 200);
+                        } else {
+                            console.error('EPC container still not found after HTML injection');
+                        }
                     }
                 })
                 .catch(error => {
@@ -292,6 +337,7 @@
 
             console.log('showCalculator called for:', calcDiv.id);
             console.log('Current display:', calcDiv.style.display);
+            console.log('Computed display:', window.getComputedStyle(calcDiv).display);
             console.log('Has content:', calcDiv.innerHTML.length > 0);
 
             // Get fresh references to calculator elements
@@ -312,9 +358,18 @@
                 loadCalculator(filePath, calcDiv).then(() => {
                     // Show the calculator after loading
                     console.log('Setting display to block for:', calcDiv.id);
+                    
+                    // Remove the style attribute entirely, then set display
+                    calcDiv.removeAttribute('style');
                     calcDiv.style.display = 'block';
-                    console.log('New display value:', calcDiv.style.display);
-                    console.log('Computed display:', window.getComputedStyle(calcDiv).display);
+                    
+                    // Also try setAttribute as backup
+                    calcDiv.setAttribute('style', 'display: block !important;');
+                    
+                    console.log('After setting - style attr:', calcDiv.getAttribute('style'));
+                    console.log('After setting - style.display:', calcDiv.style.display);
+                    console.log('After setting - computed:', window.getComputedStyle(calcDiv).display);
+                    
                     hideAllContent();
                     
                     // Scroll to calculator with proper offset
@@ -334,9 +389,19 @@
                 console.log('Calculator already loaded, just showing it...');
                 // Show the calculator if already loaded
                 console.log('Setting display to block for:', calcDiv.id);
+                console.log('BEFORE - style attr:', calcDiv.getAttribute('style'));
+                console.log('BEFORE - style.display:', calcDiv.style.display);
+                
+                // Remove the style attribute entirely, then set display
+                calcDiv.removeAttribute('style');
                 calcDiv.style.display = 'block';
-                console.log('New display value:', calcDiv.style.display);
-                console.log('Computed display:', window.getComputedStyle(calcDiv).display);
+                
+                // Also try setAttribute as backup
+                calcDiv.setAttribute('style', 'display: block !important;');
+                
+                console.log('AFTER - style attr:', calcDiv.getAttribute('style'));
+                console.log('AFTER - style.display:', calcDiv.style.display);
+                console.log('AFTER - computed:', window.getComputedStyle(calcDiv).display);
                 console.log('Hiding main content...');
                 hideAllContent();
                 
