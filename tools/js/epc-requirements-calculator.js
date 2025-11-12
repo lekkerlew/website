@@ -308,39 +308,30 @@
             <div class="result-box result-required">
                 <div class="result-header">
                     <i class="fas fa-exclamation-triangle" style="color: #dc3545;"></i>
-                    <h2 style="color: #dc3545;">EPC CERTIFICATE REQUIRED</h2>
+                    <h2 style="color: #dc3545;">YES! An EPC Is Required</h2>
                 </div>
                 
                 <div class="warning-box">
-                    <p><strong>Your building must comply by 7 December 2025</strong></p>
-                    <p>Failure to obtain and display an Energy Performance Certificate is a criminal offence under the National Energy Act.</p>
-                    <div class="penalty-box">
-                        <p>Non-compliance penalties:</p>
-                        <p>• Fine up to <strong>R5,000,000</strong></p>
-                        <p>• Imprisonment up to <strong>5 years</strong></p>
-                        <p>• Or both</p>
-                    </div>
-                </div>
-
-                <div class="deadline-highlight">
-                    <strong>⏰ Deadline: 7 December 2025</strong><br>
-                    Start the EPC process now to ensure full compliance
+                    <p><strong>⏰ EPC Deadline: 7 December 2025</strong></p>
+                    <p>Elite Energy can help you avoid penalties. Contact us now!</p>
+                    
                 </div>
 
                 <div class="action-box">
-                    <h4>What You Need to Do:</h4>
+                    <h4>Next Steps:</h4>
                     <ol>
-                        <li><strong>Register your building</strong> at <a href="https://epc.sanedi.org.za" target="_blank">epc.sanedi.org.za</a></li>
-                        <li><strong>Hire a Registered EPC Professional</strong> to conduct the energy assessment</li>
-                        <li><strong>Complete the assessment</strong> - professional will measure your building's energy consumption</li>
-                        <li><strong>Receive and display your EPC</strong> at your building entrance in full colour on A4 paper</li>
-                        <li><strong>Submit certified copy to SANEDI</strong> within 3 months of certificate issue date</li>
+                        <li>Contact Elite Energy - Use the Whatsapp buttons below to register your building.</li>
+                        <li>Get an EPC assessment quote - a checklist of information required will be provided.</li>
+                        <li>Book your EPC assessment - your EPC assessment agreement is proof of your intent to comply.</li>
+                        <li>Complete the assessment - Elite Energy will measure your building's energy consumption.</li>
+                        <li>Receive and display your EPC document - Delivered within 7 business days of the assessment.</li>
+                        <li>Submit a certified copy of your EPC to SANEDI.</li>
                     </ol>
                 </div>
 
                 <div class="cta-box">
-                    <h4><i class="fas fa-phone"></i> Book Your EPC Assessment Today</h4>
-                    <p>Contact Elite Energy Solutions to get started with your EPC certification</p>
+                    <h4><i class="fas fa-phone"></i> Start Your EPC Assessment Process Today</h4>
+                    <p>Contact us to get started</p>
                     <div class="contact-buttons">
                         <a href="https://wa.me/27823313232?text=Hi%20Llewellyn%2C%20I%20need%20to%20book%20an%20EPC%20assessment%20for%20my%20building." 
                            class="whatsapp-btn" target="_blank">
@@ -378,14 +369,14 @@
             <div class="result-box result-not-required">
                 <div class="result-header">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    <h2 style="color: #28a745;">EPC NOT REQUIRED</h2>
+                    <h2 style="color: #28a745;">Energy Performance Certificate Not Yet Required</h2>
                 </div>
                 <div class="action-box">
                     <p style="color: #155724; font-size: 15px; margin-bottom: 15px;">
                         Based on your answers, your building is <strong>not currently required</strong> to obtain an Energy Performance Certificate.
                     </p>
                     <p style="color: #155724; margin: 0;">
-                        <strong>Recommendation:</strong> Keep informed about changes to EPC regulations, as requirements may expand in the future.
+                        <strong>Recommendation:</strong> Contact us to do a thorough assessment on your building's energy costs. By implementating our recommendations some customers have saved up to <b>60%</b> per annum on their electricity bills.
                     </p>
                 </div>
                 <div class="button-group">
@@ -402,20 +393,17 @@
      */
     function renderWaitOperationalResult() {
         return `
-            <div class="result-box result-wait">
+            <div class="result-box result-not-required">
                 <div class="result-header">
-                    <i class="fas fa-clock" style="color: #0d6efd;"></i>
-                    <h2 style="color: #0d6efd;">NOT YET REQUIRED</h2>
+                    <i class="fas fa-check-circle" style="color: #28a745;"></i>
+                    <h2 style="color: #28a745;">Energy Performance Certificate Not Yet Required</h2>
                 </div>
                 <div class="action-box">
-                    <p style="color: #084298; font-size: 15px; margin-bottom: 15px;">
-                        Your building does not currently require an EPC, but this will change.
+                    <p style="color: #155724; font-size: 15px; margin-bottom: 15px;">
+                        Based on your answers, your building is <strong>not currently required</strong> to obtain an Energy Performance Certificate.
                     </p>
-                    <p style="color: #084298; margin-bottom: 10px;">
-                        <strong>Wait until:</strong> Your building has completed 2 years of continuous operation in its current use
-                    </p>
-                    <p style="color: #084298; margin: 0;">
-                        Once the 2-year operational period is complete, you will need to apply for an EPC. Set a reminder to start the process before the national deadline of 7 December 2025.
+                    <p style="color: #155724; margin: 0;">
+                        <strong>Recommendation:</strong> Contact us to do a thorough assessment on your building's energy costs. By implementating our recommendations some customers have saved up to <b>60%</b> per annum on their electricity bills.
                     </p>
                 </div>
                 <div class="button-group">
@@ -432,20 +420,17 @@
      */
     function renderWaitRenovationsResult() {
         return `
-            <div class="result-box result-wait">
+            <div class="result-box result-not-required">
                 <div class="result-header">
-                    <i class="fas fa-clock" style="color: #0d6efd;"></i>
-                    <h2 style="color: #0d6efd;">NOT YET REQUIRED</h2>
+                    <i class="fas fa-check-circle" style="color: #28a745;"></i>
+                    <h2 style="color: #28a745;">EPC Not Yet Required</h2>
                 </div>
                 <div class="action-box">
-                    <p style="color: #084298; font-size: 15px; margin-bottom: 15px;">
-                        Your building does not currently require an EPC due to recent renovations.
+                    <p style="color: #155724; font-size: 15px; margin-bottom: 15px;">
+                        Based on your answers, your building is <strong>not currently required</strong> to obtain an Energy Performance Certificate.
                     </p>
-                    <p style="color: #084298; margin-bottom: 10px;">
-                        <strong>Wait until:</strong> 2 years have passed since your major renovations were completed
-                    </p>
-                    <p style="color: #084298; margin: 0;">
-                        After the 2-year waiting period, you will need to apply for an EPC. Make sure to plan ahead and contact a Registered EPC Professional before the national deadline of 7 December 2025.
+                    <p style="color: #155724; margin: 0;">
+                        <strong>Recommendation:</strong> Contact us to do a thorough assessment on your building's energy costs. By implementating our recommendations some customers have saved up to <b>60%</b> per annum on their electricity bills.
                     </p>
                 </div>
                 <div class="button-group">

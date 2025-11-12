@@ -5,88 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPC Certification - Elite Energy | Avoid Penalties, Get Compliant Now</title>
     <meta name="description" content="Is your building EPC compliant? Avoid hefty fines and operational restrictions. Fast Track your Energy Performance Certificate with Elite Energy.">
-    <link rel="stylesheet" href="css/epc-check.css">
     
-    <!-- Calculator Modal CSS - Must match navigation system -->
-    <style>
-        /* Calculator Modal Container Styles */
-        #epc-requirements-calc,
-        #solar-cost-calc {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
-            overflow-y: auto;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        #epc-requirements-calc.active,
-        #solar-cost-calc.active {
-            display: block;
-            opacity: 1;
-        }
-        
-        /* Calculator content container */
-        #epc-requirements-calc > *,
-        #solar-cost-calc > * {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        /* Close button positioning */
-        .calc-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: none;
-            font-size: 24px;
-            color: #333;
-            cursor: pointer;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-        }
-        
-        .calc-close-btn:hover {
-            background-color: #fff;
-            transform: scale(1.1);
-        }
-    </style>
+    <!-- Main site CSS (includes calculator modal styles) -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/ee.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/epc-requirements-calculator.css">
+    
+    <!-- Landing page specific CSS -->
+    <link rel="stylesheet" href="css/epc-check.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">Elite Energy</div>
-                <div class="contact-header">
-                    <span>📞 Call: 082 331 3232</span>
-                    <span>✉️ epc@eliteenergy.co.za</span>
-                </div>
-            </nav>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" id="mainNavbar" role="navigation">
+    <div class="container nav-container-style-override">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="#top" aria-label="Back to Top">
+                <img alt="Elite Energy Solutions Logo" class="nav-logo" src="../assets/img/logo/logo_main.png" />
+            </a>
+            
         </div>
-    </header>
+        
+    </div>
+</nav>
+<!-- End Navbar -->
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="warning-badge">⚠️ Deadline: 7 December 2025</div>
-            <h1>Does Your Building Require An EPC?</h1>
-            <p class="subheading">Use our FREE, no obligation EPC tool to verify if your building needs an Energy Performance Certificate.</p>
-            <button class="cta-button" onclick="openCalculator()">FREE EPC Requirement Check</button>
+            <h1>Need an Energy Performance Certificate?</h1>
+            <p class="subheading">Use our FREE EPC tool to verify if your building needs an EPC.</p>
+            <button class="cta-button calc-loader-link" href="epc-requirements-calculator.html" data-target-div="#epc-requirements-calc">FREE EPC Requirement Check</button>
             <p class="supporting-text">✓ Takes less than 2 minutes &nbsp; ✓ No obligation &nbsp; ✓ Instant results</p>
         </div>
     </section>
@@ -100,15 +49,11 @@
                     <div class="trust-label">Electrical Services</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">48hr</div>
-                    <div class="trust-label">Turnaround Available</div>
-                </div>
-                <div class="trust-item">
                     <div class="trust-number">SANAS</div>
                     <div class="trust-label">Accredited Inspectors</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-number">Instant</div>
+                    <div class="trust-number">Country Wide</div>
                     <div class="trust-label">Compliance Assistance</div>
                 </div>
             </div>
@@ -123,7 +68,7 @@
             <div class="info-grid">
                 <div class="info-card">
                     <h3>What is an EPC?</h3>
-                    <p>An Energy Performance Certificate (EPC) is a mandatory document that rates your building's energy efficiency from A (most efficient) to G (least efficient). It provides crucial data about energy consumption and recommendations for improvements, helping building owners reduce operational costs while meeting legal requirements.</p>
+                    <p>EPC is the abbreviated form of Energy Performance Certificate. It's a mandatory document that rates your building's energy efficiency from A (most efficient) to G (least efficient). It provides crucial data about energy consumption and recommendations for improvements, helping building owners reduce operational costs while meeting legal requirements.</p>
                 </div>
                 
                 <div class="info-card">
@@ -177,7 +122,7 @@
                 <div class="benefit-item">
                     <div class="icon">✓</div>
                     <h4>Cost-Saving Recommendations</h4>
-                    <p>We'll help you identify opportunities to reduce energy costs. Clients have saved up to 30% on their annual electricity bill.</p>
+                    <p>We'll help you identify opportunities to reduce energy costs. Some clients have saved up to 60% on their annual electricity bill.</p>
                 </div>
             </div>
         </div>
@@ -187,9 +132,9 @@
     <section class="cta-section">
         <div class="container">
             <h2>Register Your Building Now - Protect Your Investment</h2>
-            <div class="limited-offer">Limited slots available for December assessments</div>
+            <div class="limited-offer">Limited slots available for November and December assessments</div>
             <p style="margin-bottom: 30px;">Buildings registered this week receive priority scheduling</p>
-            <button class="cta-button" onclick="scrollToContact()">Register Your Building Now</button>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Register Your Building Now</button>
             <p style="margin-top: 20px; font-style: italic;">If we can't certify your building, you pay nothing for our assessment.</p>
         </div>
     </section>
@@ -226,40 +171,18 @@
             <div style="max-width: 600px; margin: 0 auto;">
                 <form id="registrationForm" style="background: #f8f9fa; padding: 30px; border-radius: 10px;">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name">Name and Surname</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="company">Company Name *</label>
+                        <label for="company">Company Name</label>
                         <input type="text" id="company" name="company" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="buildings">Number of Buildings</label>
-                        <select id="buildings" name="buildings">
-                            <option value="1">1 Building</option>
-                            <option value="2-5">2-5 Buildings</option>
-                            <option value="6-10">6-10 Buildings</option>
-                            <option value="11+">11+ Buildings</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="urgency">When do you need certification?</label>
-                        <select id="urgency" name="urgency">
-                            <option value="immediate">Immediately (Within 48 hours)</option>
-                            <option value="week">Within a week</option>
-                            <option value="month">Within a month</option>
-                            <option value="planning">Just planning ahead</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%;">Register Now & Get Proof of Compliance</button>
+                    <button type="submit" class="cta-button" style="width: 100%;">Submit Enquiry</button>
                 </form>
             </div>
         </div>
@@ -282,143 +205,22 @@
 
     <!-- Sticky CTA for Mobile -->
     <div class="sticky-cta">
-        <button class="cta-button" onclick="openCalculator()">Free EPC Calculator</button>
+        <button class="cta-button calc-loader-link" href="epc-requirements-calculator.html" data-target-div="#epc-requirements-calc">Free EPC Calculator</button>
     </div>
 
-    <!-- Calculator Container (Modal Overlay) -->
+    <!-- Calculator Container (Required by navigation.js) -->
     <div id="epc-requirements-calc"></div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/epc-check.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script>
-        /**
-         * Integration with existing calculator modal system
-         * Replicates the exact behavior from navigation.js
-         */
-        function openCalculator() {
-            const targetDiv = document.getElementById('epc-requirements-calc');
-            const filePath = 'epc-requirements-calculator.html';
-            
-            if (!targetDiv) {
-                console.error('Calculator target div not found');
-                return;
-            }
-            
-            // Load calculator if not already loaded, then show it
-            if (!targetDiv.innerHTML.trim()) {
-                loadCalculator(filePath, targetDiv).then(() => {
-                    // Show the calculator modal after loading
-                    targetDiv.classList.add('active');
-                    
-                    // Scroll modal to top
-                    targetDiv.scrollTop = 0;
-                });
-            } else {
-                // Just show the calculator modal
-                targetDiv.classList.add('active');
-                
-                // Scroll modal to top
-                targetDiv.scrollTop = 0;
-            }
-            
-            // Track calculator open event
-            if (typeof trackEvent === 'function') {
-                trackEvent('Calculator', 'Open', 'EPC Requirements - Landing Page');
-            }
-        }
-        
-        /**
-         * Load calculator HTML and JavaScript
-         * Matches the implementation in navigation.js
-         */
-        function loadCalculator(filePath, targetDiv) {
-            const scriptPath = 'js/epc-requirements-calculator.js';
-            
-            return fetch(filePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Failed to load calculator: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    targetDiv.innerHTML = html;
-                    
-                    // Load calculator JavaScript
-                    return loadCalculatorScript(scriptPath);
-                })
-                .then(() => {
-                    // Wait for script to execute
-                    return new Promise(resolve => setTimeout(resolve, 300));
-                })
-                .then(() => {
-                    // Initialize EPC calculator
-                    const epcContainer = document.getElementById('epc-question-container');
-                    
-                    if (epcContainer) {
-                        if (window.epcCalculator && window.epcCalculator.init) {
-                            window.epcCalculator.init();
-                        } else {
-                            console.error('epcCalculator.init not available');
-                        }
-                    } else {
-                        console.error('EPC container not found');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading calculator:', error);
-                    targetDiv.innerHTML = `
-                        <div style="padding: 40px; text-align: center; color: #dc3545; background: white; border-radius: 8px; margin: 20px;">
-                            <h3>Error Loading Calculator</h3>
-                            <p>Sorry, we couldn't load the calculator. Please refresh the page and try again.</p>
-                            <p style="font-size: 0.9em; color: #666;">Error: ${error.message}</p>
-                        </div>
-                    `;
-                });
-        }
-        
-        /**
-         * Load calculator JavaScript file dynamically
-         */
-        function loadCalculatorScript(scriptPath) {
-            return new Promise((resolve, reject) => {
-                const existing = document.querySelector(`script[src="${scriptPath}"]`);
-                if (existing) {
-                    resolve();
-                    return;
-                }
-                
-                const script = document.createElement('script');
-                script.src = scriptPath;
-                script.onload = () => resolve();
-                script.onerror = () => reject(new Error(`Failed to load ${scriptPath}`));
-                document.body.appendChild(script);
-            });
-        }
-        
-        /**
-         * Handle calculator close button clicks
-         */
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('calc-close-btn')) {
-                const calcDiv = document.getElementById('epc-requirements-calc');
-                if (calcDiv) {
-                    calcDiv.classList.remove('active');
-                }
-            }
-        });
-        
-        /**
-         * Close calculator when clicking on backdrop (outside calculator content)
-         */
-        document.addEventListener('click', (e) => {
-            const calcDiv = document.getElementById('epc-requirements-calc');
-            if (calcDiv && e.target === calcDiv) {
-                calcDiv.classList.remove('active');
-            }
-        });
-    </script>
+    <!-- Main site navigation (includes calculator modal logic) -->
+    <script src="../js/navigation.js"></script>
+    
+    <!-- Landing page specific scripts -->
+    <script src="js/epc-check.js"></script>
 </body>
 </html>
