@@ -5,7 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPC Certification - Elite Energy | Avoid Penalties, Get Compliant Now</title>
     <meta name="description" content="Is your building EPC compliant? Avoid hefty fines and operational restrictions. Fast Track your Energy Performance Certificate with Elite Energy.">
-    <link rel="stylesheet" href="/assets/css/epc-check.css">
+    <link rel="stylesheet" href="css/epc-check.css">
+    
+    <!-- Calculator Modal CSS - Must match navigation system -->
+    <style>
+        /* Calculator Modal Container Styles */
+        #epc-requirements-calc,
+        #solar-cost-calc {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #epc-requirements-calc.active,
+        #solar-cost-calc.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Calculator content container */
+        #epc-requirements-calc > *,
+        #solar-cost-calc > * {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* Close button positioning */
+        .calc-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .calc-close-btn:hover {
+            background-color: #fff;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -101,18 +160,6 @@
     <section class="help-section">
         <div class="container">
             <h2 class="section-title">How We Can Help</h2>
-            <!-- 
-            <div class="urgency-box">
-                <h3>Register Now, Avoid Penalties Later</h3>
-                <p><strong>Time is running out.</strong> Non-compliant buildings face:</p>
-                <ul class="penalties-list">
-                    <li>Criminal prosecution</li>
-                    <li>Building closure orders</li>
-                    <li>Prohibition of sales or leases</li>
-                    <li>Reputational damage</li>
-                </ul>
-            </div>
-            -->
             <h3 style="text-align: center; color: #1e3c72; margin-bottom: 30px;">Our Fast-Track Compliance Process</h3>
             <p style="text-align: center; margin-bottom: 30px;"><strong>Register your building(s) with Elite Energy today and receive:</strong></p>
             
@@ -238,6 +285,140 @@
         <button class="cta-button" onclick="openCalculator()">Free EPC Calculator</button>
     </div>
 
-    <script src="/js/epc-check.js"></script>
+    <!-- Calculator Container (Modal Overlay) -->
+    <div id="epc-requirements-calc"></div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/epc-check.js"></script>
+    
+    <script>
+        /**
+         * Integration with existing calculator modal system
+         * Replicates the exact behavior from navigation.js
+         */
+        function openCalculator() {
+            const targetDiv = document.getElementById('epc-requirements-calc');
+            const filePath = 'epc-requirements-calculator.html';
+            
+            if (!targetDiv) {
+                console.error('Calculator target div not found');
+                return;
+            }
+            
+            // Load calculator if not already loaded, then show it
+            if (!targetDiv.innerHTML.trim()) {
+                loadCalculator(filePath, targetDiv).then(() => {
+                    // Show the calculator modal after loading
+                    targetDiv.classList.add('active');
+                    
+                    // Scroll modal to top
+                    targetDiv.scrollTop = 0;
+                });
+            } else {
+                // Just show the calculator modal
+                targetDiv.classList.add('active');
+                
+                // Scroll modal to top
+                targetDiv.scrollTop = 0;
+            }
+            
+            // Track calculator open event
+            if (typeof trackEvent === 'function') {
+                trackEvent('Calculator', 'Open', 'EPC Requirements - Landing Page');
+            }
+        }
+        
+        /**
+         * Load calculator HTML and JavaScript
+         * Matches the implementation in navigation.js
+         */
+        function loadCalculator(filePath, targetDiv) {
+            const scriptPath = 'js/epc-requirements-calculator.js';
+            
+            return fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load calculator: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    targetDiv.innerHTML = html;
+                    
+                    // Load calculator JavaScript
+                    return loadCalculatorScript(scriptPath);
+                })
+                .then(() => {
+                    // Wait for script to execute
+                    return new Promise(resolve => setTimeout(resolve, 300));
+                })
+                .then(() => {
+                    // Initialize EPC calculator
+                    const epcContainer = document.getElementById('epc-question-container');
+                    
+                    if (epcContainer) {
+                        if (window.epcCalculator && window.epcCalculator.init) {
+                            window.epcCalculator.init();
+                        } else {
+                            console.error('epcCalculator.init not available');
+                        }
+                    } else {
+                        console.error('EPC container not found');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading calculator:', error);
+                    targetDiv.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: #dc3545; background: white; border-radius: 8px; margin: 20px;">
+                            <h3>Error Loading Calculator</h3>
+                            <p>Sorry, we couldn't load the calculator. Please refresh the page and try again.</p>
+                            <p style="font-size: 0.9em; color: #666;">Error: ${error.message}</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        /**
+         * Load calculator JavaScript file dynamically
+         */
+        function loadCalculatorScript(scriptPath) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector(`script[src="${scriptPath}"]`);
+                if (existing) {
+                    resolve();
+                    return;
+                }
+                
+                const script = document.createElement('script');
+                script.src = scriptPath;
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error(`Failed to load ${scriptPath}`));
+                document.body.appendChild(script);
+            });
+        }
+        
+        /**
+         * Handle calculator close button clicks
+         */
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('calc-close-btn')) {
+                const calcDiv = document.getElementById('epc-requirements-calc');
+                if (calcDiv) {
+                    calcDiv.classList.remove('active');
+                }
+            }
+        });
+        
+        /**
+         * Close calculator when clicking on backdrop (outside calculator content)
+         */
+        document.addEventListener('click', (e) => {
+            const calcDiv = document.getElementById('epc-requirements-calc');
+            if (calcDiv && e.target === calcDiv) {
+                calcDiv.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
